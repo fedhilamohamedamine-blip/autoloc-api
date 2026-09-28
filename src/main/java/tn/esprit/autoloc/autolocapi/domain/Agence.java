@@ -1,12 +1,21 @@
 package tn.esprit.autoloc.autolocapi.domain;
-
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import tn.esprit.autoloc.autolocapi.domain.Employe;
+import tn.esprit.autoloc.autolocapi.domain.Vehicule;
 
+import java.util.List;
 @Entity
 @Table(name = "agence")
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Agence {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idAgence;
@@ -22,4 +31,10 @@ public class Agence {
 
     @Column(length = 20)
     private String telephone;
+
+    @OneToMany(mappedBy = "agence")
+    private List<Employe> employes;
+
+    @OneToMany(mappedBy = "agence")
+    private List<Vehicule> vehicules;
 }
