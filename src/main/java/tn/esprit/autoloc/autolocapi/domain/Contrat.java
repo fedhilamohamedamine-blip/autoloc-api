@@ -1,6 +1,7 @@
 package tn.esprit.autoloc.autolocapi.domain;
 
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -27,8 +28,10 @@ public class Contrat {
     private boolean valide;
 
     @OneToOne(mappedBy = "contrat")
+    @JsonIgnore
     private Reservation reservation;
 
     @OneToMany(mappedBy = "contrat")
+    @JsonIgnore
     private List<Paiement> paiements;
 }

@@ -1,5 +1,6 @@
 package tn.esprit.autoloc.autolocapi.domain;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,8 +34,10 @@ public class Agence {
     private String telephone;
 
     @OneToMany(mappedBy = "agence")
+    @JsonIgnore
     private List<Employe> employes;
 
     @OneToMany(mappedBy = "agence")
+    @JsonIgnore
     private List<Vehicule> vehicules;
 }
